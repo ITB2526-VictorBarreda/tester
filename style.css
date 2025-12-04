@@ -142,3 +142,28 @@ body {
 .nav-next {
   right: 20px;
 }
+
+/* Mostra sempre el nom de l’assignatura */
+.car-name {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+/* Oculta subtítol i especificacions per defecte */
+.car-subtitle,
+.car-specs {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+/* Mostra subtítol i especificacions només quan la slide és activa */
+.slide.active .car-subtitle,
+.slide.active .car-specs {
+  opacity: 1;
+  transform: translateY(0);
+}
