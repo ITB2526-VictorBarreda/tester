@@ -1,43 +1,125 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #0d0d0d;
+  color: white;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .main-title {
   text-align: center;
   font-size: 72px;
   color: #00ff88;
-  margin-top: 30px;
-  margin-bottom: 10px;
+  margin-top: 40px;
+  margin-bottom: 20px;
   font-weight: 900;
   letter-spacing: 3px;
   text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
 }
 
-.subtitle {
-  text-align: center;
-  font-size: 36px;
-  color: #00ff88;
-  margin-bottom: 40px;
-  font-weight: 600;
-  text-shadow: 0 0 8px rgba(0, 255, 136, 0.4);
+.slider-container {
+  width: 100%;
+  max-width: 1400px;
+  height: 85vh;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.2);
 }
 
-/* Ajust de mida de les slides */
-.slider-container {
-  max-width: 1400px;
-  height: 90vh;
+.accordion-slider {
+  display: flex;
+  height: 100%;
+}
+
+.slide {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(1);
+  transition: all 0.8s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.slide:hover,
+.slide.active {
+  filter: grayscale(0);
 }
 
 .slide.active {
-  flex: 3; /* fa que la slide activa sigui més gran */
+  flex: 3;
 }
 
-@media (max-width: 768px) {
-  .accordion-slider {
-    flex-direction: column;
-  }
+.slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8));
+}
 
-  .slide {
-    min-height: 100px;
-  }
+.slide-content {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  right: 30px;
+  z-index: 2;
+}
 
-  .slide.active {
-    flex: 2.5;
-  }
+.car-brand {
+  font-size: 14px;
+  color: #00ff88;
+  margin-bottom: 5px;
+}
+
+.car-name {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.car-subtitle {
+  font-size: 16px;
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+.car-specs .spec-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.spec-label {
+  color: #aaa;
+}
+
+.spec-value {
+  color: white;
+  font-weight: 600;
+}
+
+.navigation-arrows {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 255, 136, 0.1);
+  border: none;
+  color: #00ff88;
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.nav-prev {
+  left: 20px;
+}
+
+.nav-next {
+  right: 20px;
 }
