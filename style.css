@@ -170,3 +170,12 @@ body {
   letter-spacing: 3px;
   text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
 }
+.subtitle {
+  text-align: center;
+  font-size: 36px;
+  color: #00ff88;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-weight: 600;
+  text-shadow: 0 0 8px rgba(0, 255, 136, 0.4);
+}
