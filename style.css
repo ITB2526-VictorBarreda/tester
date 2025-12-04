@@ -123,3 +123,13 @@ body {
 .nav-next {
   right: 20px;
 }
+
+.slider-title {
+  text-align: center;
+  font-size: 36px;
+  color: #00ff88;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(0, 255, 136, 0.4);
+}
