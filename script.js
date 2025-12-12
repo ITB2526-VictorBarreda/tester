@@ -1,53 +1,145 @@
-class AccordionSlider {
-  constructor() {
-    this.slides = document.querySelectorAll(".slide");
-    this.prevBtn = document.querySelector(".nav-prev");
-    this.nextBtn = document.querySelector(".nav-next");
-    this.currentIndex = -1;
-
-    this.init();
-  }
-
-  init() {
-    this.slides.forEach((slide, index) => {
-      slide.addEventListener("click", () => this.setActiveSlide(index));
-    });
-
-    this.prevBtn.addEventListener("click", () => this.previousSlide());
-    this.nextBtn.addEventListener("click", () => this.nextSlide());
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowLeft") this.previousSlide();
-      if (e.key === "ArrowRight") this.nextSlide();
-    });
-  }
-
-  setActiveSlide(index) {
-    if (this.currentIndex === index) {
-      this.slides.forEach((slide) => slide.classList.remove("active"));
-      this.currentIndex = -1;
-    } else {
-      this.slides.forEach((slide) => slide.classList.remove("active"));
-      this.slides[index].classList.add("active");
-      this.currentIndex = index;
-    }
-  }
-
-  nextSlide() {
-    const nextIndex =
-      this.currentIndex === -1 ? 0 : (this.currentIndex + 1) % this.slides.length;
-    this.setActiveSlide(nextIndex);
-  }
-
-  previousSlide() {
-    const prevIndex =
-      this.currentIndex === -1
-        ? this.slides.length - 1
-        : (this.currentIndex - 1 + this.slides.length) % this.slides.length;
-    this.setActiveSlide(prevIndex);
-  }
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #b71c1c; /* vermell intens */
+  color: white;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  new AccordionSlider();
-});
+.main-title {
+  text-align: center;
+  font-size: 72px;
+  color: #fff;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.slider-title {
+  text-align: center;
+  font-size: 36px;
+  color: #fff;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.slider-container {
+  width: 100%;
+  max-width: 1400px;
+  height: 80vh;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  background: #b71c1c;
+}
+
+.accordion-slider {
+  display: flex;
+  height: 100%;
+}
+
+.slide {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(1);
+  transition: all 0.8s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.slide:hover {
+  filter: grayscale(0.5);
+}
+
+.slide.active {
+  flex: 3;
+  filter: grayscale(0);
+}
+
+.slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8));
+}
+
+.slide-content {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  right: 30px;
+  z-index: 2;
+}
+
+.car-brand {
+  font-size: 14px;
+  color: #ffccbc;
+  margin-bottom: 5px;
+}
+
+.car-name {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+.car-subtitle,
+.car-specs {
+  opacity: 1;
+  transform: none;
+}
+
+.car-subtitle {
+  font-size: 16px;
+  color: #eee;
+  margin-bottom: 20px;
+}
+
+.car-specs .spec-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.spec-label {
+  color: #ccc;
+}
+
+.spec-value {
+  color: white;
+  font-weight: 600;
+}
+
+.navigation-arrows {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.nav-prev {
+  left: 20px;
+}
+
+.nav-next {
+  right: 20px;
+}
